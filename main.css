@@ -435,3 +435,14 @@ li{
 	border-radius: 5px;
 	background-color:#007bff;
 }
+
+#nprogress .bar {
+	background: #fd971f !important;
+}
+#nprogress .spinner-icon {
+	border-top-color: #fd971f !important;
+	border-left-color: #fd971f !important;
+}
+#nprogress .peg {
+	box-shadow: 0 0 10px #fd971f, 0 0 5px #fd971f !important;
+}

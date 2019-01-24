@@ -1,6 +1,14 @@
 $(function() {
     var url = new objURL();
+    //Nprogress 处理
+    NProgress.configure({ 
+        minimum: 0.15,
+        speed: 100,
+        trickleSpeed: 100
+    });
+
     $(document).ready(function () {
+        NProgress.start();
         $.ajax({
             async: true,   //是否为异步请求
             cache: false,  //是否缓存结果
@@ -10,14 +18,16 @@ $(function() {
     
             success: function (data) {
                 $("#enroll-info").html("<h2>查询说明</h2><p>"+ data +"</p>");
+                NProgress.done();
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 // 状态码
-                console.log("status:"+XMLHttpRequest.status);
+                console.log("status:"+XMLHttpRequest.status+"\n");
                 // 状态
-                console.log("readyState:"+XMLHttpRequest.readyState);
+                console.log("readyState:"+XMLHttpRequest.readyState+"\n");
                 // 错误信息   
-                console.log("textStatus:"+textStatus);
+                console.log("textStatus:"+textStatus+"\n");
+                NProgress.done();
                 if (XMLHttpRequest.status == 200) {
                     $("#enroll-info").html("<h2>查询说明</h2><p>未获取到信息</p>");
                 } else {
@@ -56,6 +66,7 @@ function doAjax(urlObj) {
             console.log(jsonobj.length);
             if(jsonobj.length!=0) {
                 //获取到数据
+                NProgress.set(0.9);
                 var stu_name=jsonobj[0].stu_name;
                 var stu_examId=jsonobj[0].examId;
                 var enroll=jsonobj[0].proName;
@@ -71,12 +82,13 @@ function doAjax(urlObj) {
                 str += "<td>" + stu_examId + "</td>";
                 str += "<td>" + enroll + "</td>";
                 str += "<td>" + trackingNumber + "</td></tr>";
-                console.log(str);
                 $("#enroll_form tbody").html(str);
                 //隐藏查询，显示结果
                 $("#enroll_input").toggle();
                 $("#enroll_getShow").toggle();
+                NProgress.done();
             }else{
+                NProgress.done();
                 swal.fire(
                     '未获取到录取信息',
                     '数据库中没有有关记录，请检查证件号码是否正确',
@@ -86,11 +98,12 @@ function doAjax(urlObj) {
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             // 状态码
-            console.log(XMLHttpRequest.status);
+            console.log("status:"+XMLHttpRequest.status+"\n");
             // 状态
-            console.log(XMLHttpRequest.readyState);
+            console.log("readyState:"+XMLHttpRequest.readyState+"\n");
             // 错误信息   
-            console.log(textStatus);
+            console.log("textStatus:"+textStatus+"\n");
+            NProgress.done();
             if (XMLHttpRequest.status == 200) {
                 swal.fire(
                     '未获取到录取信息',

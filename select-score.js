@@ -1,5 +1,12 @@
 $(function () {
     var url = new objURL();
+    //Nprogress 处理
+    NProgress.configure({ 
+        minimum: 0.15,
+        speed: 100,
+        trickleSpeed: 100
+    });
+
     //网页预处理
     $(document).ready(function () {
         url.set("province", "山东");
@@ -43,6 +50,7 @@ $(function () {
 });
 function doAjax(urlObj) {
     var url = urlObj;
+    NProgress.start();
     $.ajax({
         async: true,   //是否为异步请求
         cache: false,  //是否缓存结果
@@ -51,6 +59,7 @@ function doAjax(urlObj) {
         url: url.url("/scoreAjax.php"),
 
         success: function (data) {
+            NProgress.set(0.9);
             var jsonobj = data;
             var str = "";
             for (var i = 0; i < jsonobj.length; i++) {
@@ -66,16 +75,18 @@ function doAjax(urlObj) {
             var title = "";
             title = url.get("year") + "年 " + url.get("province");
             $("#form-title").text(title);
+            NProgress.done();
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             // 状态码
-            console.log("status:"+XMLHttpRequest.status);
+            console.log("status:"+XMLHttpRequest.status+"\n");
             // 状态
-            console.log("readyState:"+XMLHttpRequest.readyState);
+            console.log("readyState:"+XMLHttpRequest.readyState+"\n");
             // 错误信息   
-            console.log("textStatus:"+textStatus);
+            console.log("textStatus:"+textStatus+"\n");
             //更改标题
             var title = url.get("year") + "年 " + url.get("province");
+            NProgress.done();
             $("#form-title").text(title);
             if (XMLHttpRequest.status == 200) {
                 $("#score-form tbody").html("<tr><td colspan=\"5\">未获取到信息</td></tr>");
