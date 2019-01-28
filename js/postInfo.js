@@ -1,4 +1,8 @@
-function changePage(data) {
+var isShow = false; // 物流信息是否已经展示
+var needShow;       // 是否有物流号码
+var postID = 0;     // 物流号码
+
+function changePage(data) { // 信息格式化，创建网页格式
     var jsonobj = data;
     var str = "";
     if (jsonobj.status == 200) {
@@ -73,16 +77,16 @@ function changePage(data) {
     $("#postBtn").html("收回通知书物流信息 <i class=\"fa fa-angle-double-up\" aria-hidden=\"true\"></i>");
 }
 
-function queryAjax(ID) {
+function queryAjax(ID) { // 发送请求，请求业务信息
     var postID = ID;
     $("#postStatus").html("状态：信息获取中");
     $("#postBody").html("");
     $("#postBtn").html("获取通知书物流信息 <i class=\"fa fa-cog fa-spin\" aria-hidden=\"true\"></i>");
     $.ajax({
-        async: true,    //是否为异步请求
-        cache: false,   //是否缓存结果
-        type: "GET",    //请求方式
-        dataType: "jsonp",   //服务器返回的数据是什么类型
+        async: true,        //是否为异步请求
+        cache: false,       //是否缓存结果
+        type: "GET",        //请求方式
+        dataType: "jsonp",  //服务器返回的数据是什么类型
         url: "https://zsb.spcsky.com/postInfoAjax.php?type=ems&postid=" + postID,
 
         success: function (data) {
@@ -103,8 +107,8 @@ function queryAjax(ID) {
         }
     });
 }
-var isShow = false;
-function postBtnClicked() {
+
+function postBtnClicked() { // 按钮按下，切换网页信息和按钮提示
     if (isShow) {
         //已经展开
         $("#postInfo").hide();
@@ -112,9 +116,22 @@ function postBtnClicked() {
         isShow = !isShow
     } else {
         //未展开
-        var postID = 0
         $("#postInfo").show();
         queryAjax(postID);
         isShow = !isShow
+    }
+}
+
+function ableCheck(flag, number = 0) { // 是否显示物流内容
+    needShow = flag;
+    postID = number;
+    if (needShow) {
+        // 有物流信息
+        $("#postBtn").attr("disabled", false);
+        $("#postBtn").show();
+    } else {
+        // 没有物流信息
+        $("#postBtn").attr("disabled", true);
+        $("#postBtn").show();
     }
 }
