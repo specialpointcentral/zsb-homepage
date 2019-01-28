@@ -29,8 +29,18 @@ if(isset($_GET['mode'])&&$_GET['mode']=='getInfo'){
     preg_match_all("%<span id=\"Label1\">(.*?)</span>%si",$p,$temp);
     echo($temp[1][0]);
 }else if(isset($_GET['mode'])&&$_GET['mode']=='getEnrollInfo'){
+    $out=array(array(
+        "stu_name"=>"小招",
+        "examId"=>"063112345678",
+        "proName"=>"1招生宣传",
+      	"trackingNumber"=>"1123069016811",
+   		));
+  if($_GET['id']=="xiaozhao"&&$_GET['pid']=="xiaozhao"){
+  	print(json_encode($out));
+  }else{
     $p = Curl("http://zsb.hitwh.edu.cn/ajax/EnRoll.aspx".$urltemp);
     print($p);
+  }
 }
 
 
