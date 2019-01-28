@@ -342,7 +342,7 @@ li{
 }
 @media (max-width: 512px){
 	.enroll-show{
-		background: url("../img/itbr.png") no-repeat center;
+		background: url("../img/hitbr.png") no-repeat center;
 		background-size: 70%;
 		width: 100%;
 		font-family:  "STXinwei","KaiTi",SimSun;
@@ -435,3 +435,4 @@ li{
 	border-radius: 5px;
 	background-color:#007bff;
 }
+

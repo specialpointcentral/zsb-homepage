@@ -1,0 +1,47 @@
+.postInfo.table>tbody>tr>td {
+    border: 0px;
+    padding: 0
+  }
+
+  .postBody {
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  .postIco {
+    width: 2em;
+    text-align: center;
+    color: #9e9e9e
+  }
+
+  .postIco.active {
+    color: #1e2022
+  }
+
+  .postInfo th {
+    padding: 2px 0;
+  }
+
+  .postStatus {
+    padding: 2px 0;
+  }
+
+  .postMsg {
+    margin: 0;
+    padding: 0;
+    color: #9e9e9e
+  }
+
+  .postMsg.active {
+    color: #1e2022;
+  }
+
+  .postTime {
+    margin: 0;
+    padding-bottom: 5px;
+    color: #9e9e9e
+  }
+
+  .postTime.active {
+    color: #52616a;
+  }

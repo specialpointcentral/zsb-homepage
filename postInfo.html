@@ -10,52 +10,21 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
     crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
-    crossorigin="anonymous">
-  <style>
-    .postInfo.table>tbody>tr>td {
-      border: 0px;
-      padding: 0
-    }
-
-    .postIco {
-      padding: 2px 1px;
-      width: 2em;
-      text-align: center
-    }
-
-    .postInfo th {
-      padding: 2px 0;
-    }
-
-    .postStatus {
-      padding: 2px 0;
-    }
-
-    .postMsg {
-      color: #1e2022;
-      margin: 0;
-      padding: 0;
-    }
-
-    .postTime {
-      color: #52616a;
-      margin: 0;
-      padding-bottom: 5px;
-    }
-  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css"
+    integrity="sha256-lWwvJodqrCBurwAZ2n1MiE73AQgZ6Gr9jWRd6ed7WiQ=" crossorigin="anonymous"> crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/postInfo.css">
 </head>
 
 <body>
-  <div class="container">
+  <div class="">
     <table class="table postInfo">
       <thead>
         <tr>
           <th class="postIco"></th>
-          <th class="postStatus" id="postStatus">状态</th>
+          <th class="postStatus" id="postStatus">状态：信息获取中</th>
         </tr>
       </thead>
-      <tbody id="postBody" style="font-size: 12px; line-height: 22px;">
+      <tbody class="postBody" id="postBody">
         <tr>
           <td></td>
           <td></td>
@@ -72,82 +41,11 @@
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
-
+  <script src="./js/postInfo.js"></script>
   <script>
     $(document).ready(function () {
-      //queryAjax(1123069016811);
-      var s = '{"message":"ok","nu":"1123069016811","ischeck":"1","condition":"F00","com":"ems","status":"200","state":"3","data":[{"time":"2018-08-03 18:34:23","ftime":"2018-08-03 18:34:23","context":"[杭州市邮政速递物流公司东区分公司秋涛北路揽投站]在 杭州市 投递并签收，签收人：他人收 家人","location":"杭州市邮政速递物流公司东区分公司秋涛北路揽投站"},{"time":"2018-08-03 11:32:38","ftime":"2018-08-03 11:32:38","context":"杭州市邮政速递物流公司东区分公司秋涛北路揽投站安排投递，预计18:00:00前投递（投递员姓名：黄波;联系电话：13357105690）","location":"杭州市邮政速递物流公司东区分公司秋涛北路揽投站"},{"time":"2018-08-02 18:48:39","ftime":"2018-08-02 18:48:39","context":"[杭州市邮政速递物流公司东区分公司秋涛北路揽投站]杭州市 未妥投，原因：收件人要求延迟投递","location":"杭州市邮政速递物流公司东区分公司秋涛北路揽投站"},{"time":"2018-08-02 15:19:07","ftime":"2018-08-02 15:19:07","context":"杭州市邮政速递物流公司东区分公司秋涛北路揽投站安排投递，预计21:00:00前投递（投递员姓名：黄波;联系电话：13357105690）","location":"杭州市邮政速递物流公司东区分公司秋涛北路揽投站"},{"time":"2018-08-02 14:25:14","ftime":"2018-08-02 14:25:14","context":"离开杭州处理中心 发往杭州市邮政速递物流公司东区分公司秋涛北路揽投站","location":"杭州处理中心"},{"time":"2018-08-02 12:15:00","ftime":"2018-08-02 12:15:00","context":"到达 杭州陆运转运中心 处理中心","location":"杭州陆运转运中心"},{"time":"2018-08-02 07:18:00","ftime":"2018-08-02 07:18:00","context":"[EMS航空集散中心（南京）]离开南京市 发往杭州市（经转）","location":"EMS航空集散中心（南京）"},{"time":"2018-08-02 02:15:00","ftime":"2018-08-02 02:15:00","context":"到达EMS航空集散中心（南京）处理中心（经转）","location":"EMS航空集散中心（南京）"},{"time":"2018-08-02 00:40:00","ftime":"2018-08-02 00:40:00","context":"[青岛航站]离开青岛市 发往南京市（经转）","location":"青岛航站"},{"time":"2018-08-01 21:45:00","ftime":"2018-08-01 21:45:00","context":"到达青岛航站处理中心（经转）","location":"青岛航站"},{"time":"2018-08-01 19:11:40","ftime":"2018-08-01 19:11:40","context":"[威海处理中心]离开威海市 发往青岛市","location":"威海处理中心"},{"time":"2018-08-01 10:57:04","ftime":"2018-08-01 10:57:04","context":"已离开威海速递高区揽投部，发往中国邮政速递物流股份有限公司威海市邮件处理中心","location":"威海速递高区揽投部"},{"time":"2018-08-01 09:07:00","ftime":"2018-08-01 09:07:00","context":"威海市 威海速递高区揽投部已收件（揽投员姓名：刘业永,联系电话:18863066106）","location":"威海速递高区揽投部"}]}'
-      var jsonobj = eval('(' + s + ')');
-      var str = "";
-      console.log(jsonobj.state)
-      if (jsonobj.status == 200) {
-        switch (jsonobj.state) {
-          case '0':
-            // 在途中
-            $("#postStatus").html("状态：在途中");
-            break
-          case '1':
-            // 已揽收
-            $("#postStatus").html("状态：已揽收");
-            break
-          case '2':
-            // 疑难
-            $("#postStatus").html("状态：疑难件");
-            break
-          case '3':
-            // 已签收
-            $("#postStatus").html("状态：已签收");
-            console.log("this")
-            break
-          default:
-          // 其余
-        }
-        for (var i = 0; i < jsonobj.data.length; i++) {
-          str += "<tr><td class=\"postIco\"><i class=\"fa fa-hourglass-end\" aria-hidden=\"true\"></i></td>"
-          str += "<td><p class=\"postMsg\">" + jsonobj.data[i].context + "</p><p class=\"postTime\">" + jsonobj.data[i].ftime + "</p></td></tr>";
-        }
-      } else {
-        //没有运单
-        str = "<tr><td><i class=\"fa fa-question-circle\" aria-hidden=\"true\"></i></td><td>未获取到运单信息</td></tr>"
-      }
-
-      $("#postBody").html(str);
+      queryAjax(1123069016811);
     });
-    function queryAjax(ID) {
-      var postID = ID;
-      $.ajax({
-        async: true,   //是否为异步请求
-        cache: false,  //是否缓存结果
-        type: "GET", //请求方式
-        dataType: "jsonp",   //服务器返回的数据是什么类型
-        url: "http://www.kuaidi100.com/query?type=ems&postid=" + postID,
-
-        success: function (data) {
-          console.log(data)
-          var jsonobj = data.data;
-          var str = "";
-          for (var i = 0; i < jsonobj.length; i++) {
-            str += "<tr><td>" + jsonobj[i].ftime + "</td>";
-            str += "<td>" + jsonobj[i].context + "</td>";
-          }
-          $(".postInfo").html(str);
-
-          //更改标题
-
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-          // 状态码
-          console.log("status:" + XMLHttpRequest.status + "\n");
-          // 状态
-          console.log("readyState:" + XMLHttpRequest.readyState + "\n");
-          // 错误信息   
-          console.log("textStatus:" + textStatus + "\n");
-          //更改标题
-
-        }
-      });
-    }
-
   </script>
 </body>
 

@@ -14,8 +14,11 @@
 	 crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@8.0.1/dist/sweetalert2.min.css" integrity="sha256-/PVkO2+mUlKqE6wgKVXU5Wh4mx3vncHAxLEdpXrziGo="
 	 crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css"
+	 integrity="sha256-lWwvJodqrCBurwAZ2n1MiE73AQgZ6Gr9jWRd6ed7WiQ=" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/nprogress.css">
 	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/postInfo.css">
 	<!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
 	<!--[if lt IE 9]>
       <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -27,20 +30,20 @@
 <body>
 	<!-- head -->
 	<div class="container-fluid">
-		<!--banner begin-->
+		<!-- banner begin -->
 		<div class="banner">
 			<div class="banner-img"></div>
 			<div class="container">
 				<h1 class="title">录取信息查询</h1>
 			</div>
 		</div>
-		<!--banner end-->
+		<!-- banner end -->
 	</div>
 	<!-- body -->
 	<div class="container container-fix">
 		<!-- ID enter form begin -->
 		<div class="form-container">
-			<!--select form begin-->
+			<!-- select form begin -->
 			<ul class="nav nav-pills">
 				<li class="nav-item">
 					<a class="nav-link" href="score.html">历年分数</a>
@@ -52,9 +55,10 @@
 					<a class="nav-link active" href="enroll.html">录取查询</a>
 				</li>
 			</ul>
-			<!--select form end-->
-			<!--form begin-->
-			<div class="row enroll-frame" id="enroll_input">
+			<!-- select form end -->
+
+			<!-- form begin -->
+			<div class="row enroll-frame" id="enroll_input" style="display: none">
 				<div class="col-sm-6" id="enroll-info">
 					<h2>查询说明</h2>
 
@@ -75,10 +79,10 @@
 					</div>
 				</div>
 			</div>
-			<!--form end-->
+			<!-- form end -->
 
-			<!--enroll show begin-->
-			<div class="enroll-show" id="enroll_getShow" style="display: none">
+			<!-- enroll show begin -->
+			<div class="enroll-show" id="enroll_getShow" style="display: block">
 				<p class="enroll_stuName">XXX同学：<p>
 						<p class="enroll_info">你已经被 哈尔滨工业大学（威海）</p>
 						<p class="enroll_school">XXX专业录取</p>
@@ -93,11 +97,38 @@
 								</tr>
 							</thead>
 							<tbody class="form-texts">
-
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
 							</tbody>
 						</table>
 			</div>
-			<!--enroll show end-->
+			<!-- enroll show end -->
+
+			<!-- post information section start -->
+			<div>
+				<table class="table postInfo" id="postInfo" style="display: none">
+					<thead>
+						<tr>
+							<th class="postIco"></th>
+							<th class="postStatus" id="postStatus">状态：信息获取中</th>
+						</tr>
+					</thead>
+					<tbody class="postBody" id="postBody">
+						<tr>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+				<button type="button" class="btn btn-outline-primary btn-sm btn-block" id="postBtn" onclick="postBtnClicked()"
+				 style="display: block">展开通知书物流信息 <i class="fa fa-angle-double-down" aria-hidden="true"></i></button>
+			</div>
+			<!-- post information section end -->
+
 		</div>
 		<!-- ID enter form end -->
 	</div>
@@ -144,6 +175,7 @@
 	<script src="js/nprogress.js"></script>
 	<script src="js/url.js"></script>
 	<script src="js/enroll.js"></script>
+	<script src="js/postInfo.js"></script>
 </body>
 
 </html>
