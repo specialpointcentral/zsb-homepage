@@ -57,7 +57,7 @@ function doAjax(urlObj) {
         cache: false,  //是否缓存结果
         type: "GET", //请求方式
         dataType: "json",   //服务器返回的数据是什么类型
-        url: url.url("/planAjax.php"),
+        url: url.url("ajax/planAjax.php"),
 
         success: function (data) {
             NProgress.set(0.9);

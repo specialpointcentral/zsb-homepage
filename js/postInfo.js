@@ -87,7 +87,7 @@ function queryAjax(ID) { // 发送请求，请求业务信息
         cache: false,       //是否缓存结果
         type: "GET",        //请求方式
         dataType: "jsonp",  //服务器返回的数据是什么类型
-        url: "https://zsb.spcsky.com/postInfoAjax.php?type=ems&postid=" + postID,
+        url: "ajax/postInfoAjax.php?type=ems&postid=" + postID,
 
         success: function (data) {
             changePage(data);
