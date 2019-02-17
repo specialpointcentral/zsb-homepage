@@ -1,4 +1,4 @@
-$(function () {
+﻿$(function () {
     var url = new objURL();
     //Nprogress 处理
     NProgress.configure({ 
@@ -10,7 +10,7 @@ $(function () {
     //网页预处理
     $(document).ready(function () {
         url.set("province", "山东");
-        url.set("year", "2017");
+        url.set("year", "2018");
         $(".province-select").each(function () {
             $(this).removeClass("active");
         });
