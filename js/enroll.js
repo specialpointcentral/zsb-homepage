@@ -14,7 +14,7 @@ $(function () {
             cache: false,  //是否缓存结果
             type: "GET", //请求方式
             dataType: "text",   //服务器返回的数据是什么类型
-            url: "ajax/enroll.php?mode=getInfo",
+            url: "./ajax/enroll.php?mode=getInfo",
 
             success: function (data) {
                 $("#enroll-info").html("<h2>查询说明</h2><p>" + data + "</p>");
@@ -59,7 +59,7 @@ function doAjax(urlObj) {
         cache: false,  //是否缓存结果
         type: "GET", //请求方式
         dataType: "json",   //服务器返回的数据是什么类型
-        url: url.url("ajax/enroll.php"),
+        url: url.url("./ajax/enroll.php"),
 
         success: function (data) {
             var jsonobj = data;
