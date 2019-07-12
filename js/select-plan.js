@@ -1,7 +1,7 @@
 $(function () {
     var url = new objURL();
     //Nprogress 处理
-    NProgress.configure({ 
+    NProgress.configure({
         minimum: 0.15,
         speed: 100,
         trickleSpeed: 100
@@ -10,7 +10,7 @@ $(function () {
     //网页预处理
     $(document).ready(function () {
         url.set("province", "山东");
-        url.set("year", "2018");
+        url.set("year", "2019");
         $(".province-select").each(function () {
             $(this).removeClass("active");
         });
@@ -68,12 +68,12 @@ function doAjax(urlObj) {
                 str += "<td>" + jsonobj[i]._provincename + "</td>";
                 str += "<td>" + jsonobj[i]._proname + "</td>";
                 str += "<td>" + jsonobj[i]._pernum + "</td>";
-                if(jsonobj[i]._tuition==""&&jsonobj[i]._remarks==""){
+                if (jsonobj[i]._tuition == "" && jsonobj[i]._remarks == "") {
                     str += "<td> / </td></tr>";
-                }else{
-                    str += "<td>" +jsonobj[i]._tuition+" / " + jsonobj[i]._remarks + "</td></tr>";
+                } else {
+                    str += "<td>" + jsonobj[i]._tuition + " / " + jsonobj[i]._remarks + "</td></tr>";
                 }
-                
+
             }
             $("#score-form tbody").html(str);
 
@@ -85,11 +85,11 @@ function doAjax(urlObj) {
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             // 状态码
-            console.log("status:"+XMLHttpRequest.status+"\n");
+            console.log("status:" + XMLHttpRequest.status + "\n");
             // 状态
-            console.log("readyState:"+XMLHttpRequest.readyState+"\n");
+            console.log("readyState:" + XMLHttpRequest.readyState + "\n");
             // 错误信息   
-            console.log("textStatus:"+textStatus+"\n");
+            console.log("textStatus:" + textStatus + "\n");
             //更改标题
             var title = url.get("year") + "年 " + url.get("province");
             NProgress.done();

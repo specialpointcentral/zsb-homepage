@@ -1,7 +1,7 @@
 ﻿$(function () {
     var url = new objURL();
     //Nprogress 处理
-    NProgress.configure({ 
+    NProgress.configure({
         minimum: 0.15,
         speed: 100,
         trickleSpeed: 100
@@ -79,11 +79,11 @@ function doAjax(urlObj) {
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             // 状态码
-            console.log("status:"+XMLHttpRequest.status+"\n");
+            console.log("status:" + XMLHttpRequest.status + "\n");
             // 状态
-            console.log("readyState:"+XMLHttpRequest.readyState+"\n");
+            console.log("readyState:" + XMLHttpRequest.readyState + "\n");
             // 错误信息   
-            console.log("textStatus:"+textStatus+"\n");
+            console.log("textStatus:" + textStatus + "\n");
             //更改标题
             var title = url.get("year") + "年 " + url.get("province");
             NProgress.done();

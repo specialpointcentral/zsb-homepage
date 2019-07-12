@@ -1,55 +1,62 @@
-$(function () {
-    var url = new objURL();
-    //Nprogress 处理
-    NProgress.configure({
-        minimum: 0.15,
-        speed: 100,
-        trickleSpeed: 100
-    });
+var url = new objURL();
+//Nprogress 处理
+NProgress.configure({
+    minimum: 0.15,
+    speed: 100,
+    trickleSpeed: 100
+});
 
-    $(document).ready(function () {
-        NProgress.start();
-        $.ajax({
-            async: true,   //是否为异步请求
-            cache: false,  //是否缓存结果
-            type: "GET", //请求方式
-            dataType: "text",   //服务器返回的数据是什么类型
-            url: "./ajax/enroll.php?mode=getInfo",
+$(document).ready(function () {
+    NProgress.start();
+    resizeMask();
+    $(".mask").show();
+    $.ajax({
+        async: true,   //是否为异步请求
+        cache: false,  //是否缓存结果
+        type: "GET", //请求方式
+        dataType: "json",   //服务器返回的数据是什么类型
+        url: "./ajax/enroll.php?mode=getInfo",
 
-            success: function (data) {
-                $("#enroll-info").html("<h2>查询说明</h2><p>" + data + "</p>");
-                NProgress.done();
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                // 状态码
-                console.log("status:" + XMLHttpRequest.status + "\n");
-                // 状态
-                console.log("readyState:" + XMLHttpRequest.readyState + "\n");
-                // 错误信息   
-                console.log("textStatus:" + textStatus + "\n");
-                NProgress.done();
-                if (XMLHttpRequest.status == 200) {
-                    $("#enroll-info").html("<h2>查询说明</h2><p>未获取到信息</p>");
-                } else {
-                    $("#enroll-info").html("<h2>查询说明</h2><p>出错请重试</p>");
-                }
+        success: function (data) {
+            if (data.code !== 200) return;
+            // data.open
+            if (data.open) $(".mask").hide();
+            else $(".mask").show();
+            // data.msg
+            $("#enroll-info").html("<h2>查询说明</h2><p>" + data.msg + "</p>");
+            resizeMask();
+            NProgress.done();
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            // 状态码
+            console.log("status:" + XMLHttpRequest.status + "\n");
+            // 状态
+            console.log("readyState:" + XMLHttpRequest.readyState + "\n");
+            // 错误信息   
+            console.log("textStatus:" + textStatus + "\n");
+            if (XMLHttpRequest.status === 200) {
+                $("#enroll-info").html("<h2>查询说明</h2><p>未获取到信息</p>");
+            } else {
+                $("#enroll-info").html("<h2>查询说明</h2><p>出错请重试</p>");
             }
-        });
-    });
-
-    $("#submit").click(function () {
-        var pid = $("#perId").val();
-        var examId = $("#examId").val();
-        if (pid.length == 0 || examId.length == 0) {
-            swal.fire("身份证号和准考证号必须都输入", "", "warning");
-            return false;
+            resizeMask();
+            NProgress.done();
         }
-        url.set("mode", "getEnrollInfo");
-        url.set("id", examId);
-        url.set("pid", pid);
-        NProgress.start();
-        doAjax(url);
     });
+});
+
+$("#submit").click(function () {
+    var pid = $("#perId").val();
+    var examId = $("#examId").val();
+    if (pid.length == 0 || examId.length == 0) {
+        swal.fire("身份证号和准考证号必须都输入", "", "warning");
+        return false;
+    }
+    url.set("mode", "getEnrollInfo");
+    url.set("id", examId);
+    url.set("pid", pid);
+    NProgress.start();
+    doAjax(url);
 });
 
 function doAjax(urlObj) {
@@ -77,8 +84,8 @@ function doAjax(urlObj) {
                 if (trackingNumber == "") {
                     trackingNumber = "暂无";
                     ableCheck(false);                   // 不允许查询
-                }else {
-                    ableCheck(true,trackingNumber);     // 允许进行查询并写入通知书运单号
+                } else {
+                    ableCheck(true, trackingNumber);     // 允许进行查询并写入通知书运单号
                 }
                 //显示界面
                 $(".enroll_stuName").html(stu_name + " 同学：");
@@ -127,3 +134,12 @@ function doAjax(urlObj) {
         }
     });
 }
+
+function resizeMask() {
+    let h = $("#enroll_input").outerHeight();
+    let w = $("#enroll_input").outerWidth();
+    console.log(h, w)
+    $(".mask").height(h);
+    $(".mask").width(w);
+}
+$(window).resize(resizeMask);

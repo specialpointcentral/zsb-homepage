@@ -57,3 +57,8 @@ MIT
 如果您发现BUG或想加入其他功能，请在Issues部分汇报，谢谢。
 
 同时也可fork和pull request实现更多功能
+
+## 近期更新
+
+- 允许增加banner
+- 修改部分bug
