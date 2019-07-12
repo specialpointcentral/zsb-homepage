@@ -5,7 +5,7 @@ var postID = 0;     // 物流号码
 function changePage(data) { // 信息格式化，创建网页格式
     var jsonobj = data;
     var str = "";
-    if (jsonobj.status == 200) {
+    if (jsonobj.status === 200) {
         //获取到信息
         switch (jsonobj.state) {
             case '0':
@@ -83,10 +83,10 @@ function queryAjax(ID) { // 发送请求，请求业务信息
     $("#postBody").html("");
     $("#postBtn").html("获取通知书物流信息 <i class=\"fa fa-cog fa-spin\" aria-hidden=\"true\"></i>");
     $.ajax({
-        async: true,        //是否为异步请求
-        cache: false,       //是否缓存结果
-        type: "GET",        //请求方式
-        dataType: "jsonp",  //服务器返回的数据是什么类型
+        async: true,
+        cache: false,
+        type: "GET",
+        dataType: "jsonp",
         url: "ajax/postInfoAjax.php?type=ems&postid=" + postID,
 
         success: function (data) {
@@ -99,6 +99,7 @@ function queryAjax(ID) { // 发送请求，请求业务信息
             console.log("readyState:" + XMLHttpRequest.readyState + "\n");
             // 错误信息   
             console.log("textStatus:" + textStatus + "\n");
+            console.log("errorInfo:" + errorThrown + "\n");
             //更改标题
             str = "<tr><td class=\"postIco active\"><i class=\"fa fa-question-circle\" aria-hidden=\"true\"></i></td>" +
                 "<td><p class=\"postMsg active\">获取信息错误，错误代码：" + XMLHttpRequest.status + "。</p></td></tr>";

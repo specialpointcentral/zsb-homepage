@@ -1,4 +1,5 @@
 var url = new objURL();
+url.hello();
 //Nprogress 处理
 NProgress.configure({
     minimum: 0.15,
@@ -11,10 +12,10 @@ $(document).ready(function () {
     resizeMask();
     $(".mask").show();
     $.ajax({
-        async: true,   //是否为异步请求
-        cache: false,  //是否缓存结果
-        type: "GET", //请求方式
-        dataType: "json",   //服务器返回的数据是什么类型
+        async: true,
+        cache: false,
+        type: "GET",
+        dataType: "json",
         url: "./ajax/enroll.php?mode=getInfo",
 
         success: function (data) {
@@ -34,6 +35,7 @@ $(document).ready(function () {
             console.log("readyState:" + XMLHttpRequest.readyState + "\n");
             // 错误信息   
             console.log("textStatus:" + textStatus + "\n");
+            console.log("errorInfo:" + errorThrown + "\n");
             if (XMLHttpRequest.status === 200) {
                 $("#enroll-info").html("<h2>查询说明</h2><p>未获取到信息</p>");
             } else {
@@ -62,26 +64,25 @@ $("#submit").click(function () {
 function doAjax(urlObj) {
     var url = urlObj;
     $.ajax({
-        async: true,   //是否为异步请求
-        cache: false,  //是否缓存结果
-        type: "GET", //请求方式
-        dataType: "json",   //服务器返回的数据是什么类型
+        async: true,
+        cache: false,
+        type: "GET",
+        dataType: "json",
         url: url.url("./ajax/enroll.php"),
 
         success: function (data) {
             var jsonobj = data;
             var str = "";
-            console.log(jsonobj.length);
             if (jsonobj.length != 0) {
                 //获取到数据
                 NProgress.set(0.9);
-                var stu_name = jsonobj[0].stu_name;
-                var stu_examId = jsonobj[0].examId;
-                var enroll = jsonobj[0].proName;
-                var score = jsonobj[0].score;
-                var trackingNumber = jsonobj[0].trackingNumber;
-                if (score == "") score = "暂无";
-                if (trackingNumber == "") {
+                var stu_name = $.trim(jsonobj[0].stu_name);
+                var stu_examId = Number(jsonobj[0].examId);
+                var enroll = $.trim(jsonobj[0].proName);
+                var score = Number(jsonobj[0].score);
+                var trackingNumber = Number(jsonobj[0].trackingNumber);
+                if (score == 0) score = "暂无";
+                if (trackingNumber == 0) {
                     trackingNumber = "暂无";
                     ableCheck(false);                   // 不允许查询
                 } else {
@@ -116,6 +117,7 @@ function doAjax(urlObj) {
             console.log("readyState:" + XMLHttpRequest.readyState + "\n");
             // 错误信息   
             console.log("textStatus:" + textStatus + "\n");
+            console.log("errorInfo:" + errorThrown + "\n");
             NProgress.done();
             if (XMLHttpRequest.status == 200) {
                 swal.fire(
@@ -138,7 +140,6 @@ function doAjax(urlObj) {
 function resizeMask() {
     let h = $("#enroll_input").outerHeight();
     let w = $("#enroll_input").outerWidth();
-    console.log(h, w)
     $(".mask").height(h);
     $(".mask").width(w);
 }

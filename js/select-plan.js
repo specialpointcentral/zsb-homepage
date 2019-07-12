@@ -1,5 +1,6 @@
 $(function () {
     var url = new objURL();
+    url.hello();
     //Nprogress 处理
     NProgress.configure({
         minimum: 0.15,
@@ -90,6 +91,7 @@ function doAjax(urlObj) {
             console.log("readyState:" + XMLHttpRequest.readyState + "\n");
             // 错误信息   
             console.log("textStatus:" + textStatus + "\n");
+            console.log("errorInfo:" + errorThrown + "\n");
             //更改标题
             var title = url.get("year") + "年 " + url.get("province");
             NProgress.done();
