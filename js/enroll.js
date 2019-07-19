@@ -89,14 +89,12 @@ function doAjax(urlObj) {
                     ableCheck(true, trackingNumber);     // 允许进行查询并写入通知书运单号
                 }
                 //显示界面
-                $(".enroll_stuName").html(stu_name + " 同学：");
-                $(".enroll_school").html(enroll + " 专业录取");
-                var str = "";
-                str += "<tr><td>" + stu_name + "</td>";
-                str += "<td>" + stu_examId + "</td>";
-                str += "<td>" + enroll + "</td>";
-                str += "<td>" + trackingNumber + "</td></tr>";
-                $("#enroll_form tbody").html(str);
+                $(".enroll_stuName").html(stu_name + "同学");
+                $(".enroll_info").html("你已经被" + enroll + "专业录取");
+                $("#stu_name").text(stu_name);
+                $("#stu_examId").text(stu_examId);
+                $("#enroll").text(enroll);
+                $("#trackingNumber").text(trackingNumber);
                 //隐藏查询，显示结果
                 $("#enroll_input").toggle();
                 $("#enroll_getShow").toggle();

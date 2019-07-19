@@ -1,7 +1,7 @@
 ﻿/*
 ** author: spc
-** version: 1.5.0
-** time: 2019/01/24
+** version: 2.0.1
+** time: 2019/07/19
 */
 
 /*boostrap cover*/
@@ -70,7 +70,7 @@ li{
 /*body*/
 
 .container-fix {
-	margin-bottom: 100px
+	padding-bottom: 120px
 }
 
 @media (min-width: 768px){
@@ -81,7 +81,7 @@ li{
 
 .form-container {
 	margin-top: 20px;
-	padding-bottom: 10px;
+	padding: 10px;
 	position: relative;
 	top: 100px;
 	background-color: rgba(255, 255, 255, 0.95);
@@ -98,6 +98,7 @@ li{
 }
 .form-texts{
 	font-size: 0.9em;
+	font-family: "微软雅黑",arial;
 }
 
 /*province*/
@@ -259,6 +260,10 @@ li{
 .foot-color .foot-color-e {
     background-color: #ae74ac;
 }
+/* enroll background*/
+.enroll-bg{
+	background-color: #73C6BE;
+}
 
 /*enroll form*/
 
@@ -284,18 +289,15 @@ li{
 }
 .enroll_stuName{
 	margin-top: 25px;
-	padding: 30px;
+	padding: 25px;
+	padding-bottom: 10px;
 	font-size: 48px;
+	text-align: center;
 }
 .enroll_info{
-	margin-top: 10px;
-	padding-left: 30px;
+	margin-top: 5px;
 	font-size: 38px;
-}
-.enroll_school{
-	margin-top: 10px;
-	padding-left: 30px;
-	font-size: 38px;
+	text-align: center;
 }
 .enroll_footer{
 	margin-top: 10px;
@@ -304,6 +306,26 @@ li{
 	text-align: right;
 	color: #8d8d8d;
 	font-family: SimSun;
+}
+.top-line{
+	border-style:solid;
+	border-top-color: #73C6BE;
+	border-width: 5px 0 0 0;
+	padding: 10px 0 0 0;
+}
+.info-table{
+	font-family: "微软雅黑";
+}
+.info-table td,
+.info-table th{
+	border: 0px solid transparent !important;
+	text-align: center;
+}
+.info-table th{
+	padding-bottom: 5px;
+}
+.info-table td{
+	padding-top: 5px;
 }
 #enroll_form{
 	font-family: SimSun;
@@ -321,18 +343,13 @@ li{
 		font-family:  "STXinwei","KaiTi",SimSun;
 	}
 	.enroll_stuName{
-		margin-top: 25px;
-		padding: 30px;
+		margin-top: 10px;
+		padding: 10px;
+		padding-bottom: 1px;
 		font-size: 40px;
 	}
 	.enroll_info{
-		margin-top: 10px;
-		padding-left: 30px;
-		font-size: 28px;
-	}
-	.enroll_school{
-		margin-top: 10px;
-		padding-left: 30px;
+		margin-top: 5px;
 		font-size: 28px;
 	}
 	.enroll_footer{
@@ -352,19 +369,14 @@ li{
 		font-family:  "STXinwei","KaiTi",SimSun;
 	}
 	.enroll_stuName{
-		margin-top: 25px;
-		padding: 30px;
+		margin-top: 5px;
+		padding: 5px;
+		padding-bottom: 1px;
 		font-size: 37px;
 	}
 	.enroll_info{
-		margin-top: 10px;
-		padding-left: 30px;
-		font-size: 20px;
-	}
-	.enroll_school{
-		margin-top: 10px;
-		padding-left: 30px;
-		font-size: 20px;
+		margin-top: 5px;
+		font-size: 23px;
 	}
 	.enroll_footer{
 		margin-top: 10px;
@@ -384,7 +396,6 @@ li{
 	}
 	.enroll_info{
 		margin-top: 10px;
-		padding-left: 30px;
 		font-size: 18px;
 	}
 	.enroll_school{
@@ -410,8 +421,7 @@ li{
 	}
 	.enroll_info{
 		margin-top: 10px;
-		padding-left: 30px;
-		font-size: 17px;
+		font-size: 16px;
 	}
 }
 
