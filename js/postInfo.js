@@ -87,7 +87,7 @@ function queryAjax(ID) { // 发送请求，请求业务信息
         cache: false,
         type: "GET",
         dataType: "jsonp",
-        url: "ajax/postInfoAjax.php?type=ems&postid=" + postID,
+        url: "ajax/postInfoAjax.php?postid=" + postID,
 
         success: function (data) {
             changePage(data);

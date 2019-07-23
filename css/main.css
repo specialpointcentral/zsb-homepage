@@ -61,8 +61,7 @@ li{
 }
 
 .banner .title {
-	position: absolute;
-	top: 30px;
+	margin-top: 30px;
 	color: #fff;
 }
 
@@ -71,6 +70,10 @@ li{
 
 .container-fix {
 	padding-bottom: 120px
+}
+
+.container-enroll {
+	padding-bottom: 20px
 }
 
 @media (min-width: 768px){
@@ -83,7 +86,6 @@ li{
 	margin-top: 20px;
 	padding: 10px;
 	position: relative;
-	top: 100px;
 	background-color: rgba(255, 255, 255, 0.95);
 	border-radius: 5px;
 	font-family: "微软雅黑";

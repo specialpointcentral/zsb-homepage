@@ -59,8 +59,14 @@ function objURL(url) {
         };
         console.log("js infomation table:");
         console.table(table);
-        console.info("%cHi，你好\n恭喜你发现了一个彩蛋哦~\n如果你是一个HITers，联系我吧，交个朋友可好？ \
-        \n如果你不是HITers，没关系，也联系我吧，也交个朋友，嘻嘻","color:blue");
-        console.info("%c联系我：spcreply#126.com (change # to @)","color:blue");
+        console.info("%c\
+        Hi，你好\n \
+        恭喜你发现了一个彩蛋哦~\n \
+        如果你是一个HITers，联系我吧，交个朋友可好？\n \
+        如果你不是HITers，没关系，也联系我吧，也交个朋友，嘻嘻。\n \
+        你可以通过这个联系我哦：spcreply#126.com (change # to @)\n \
+        最后，还是那一句话：\n \
+        哈工大见！\n\n \
+        选择哈工大，不负好年华。","color:blue");
     }
 }
